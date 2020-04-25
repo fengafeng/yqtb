@@ -4,6 +4,12 @@ import sys
 
 s = requests.Session()
  
+"""
+登录
+args stu_name: 学生名字
+args stu_id: 学号
+returns: 返回是否登录成功
+"""
 def login(stu_name, stu_id):
     login_url = 'https://wx.app.nbpt.edu.cn/yqtb/bind?schoolid=5'
     login_data = {
@@ -19,6 +25,10 @@ def login(stu_name, stu_id):
         print(response.json()['msg'])
         return True
 
+"""
+    提交表单上报
+  return: 返回提交的信息  
+"""
 def tb():
     tb_url = 'https://wx.app.nbpt.edu.cn/yqtb/weixin/yqtb/submit?date=20' + time.strftime('%y-%m-%d')
     tb_data = {
