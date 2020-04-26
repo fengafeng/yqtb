@@ -1,6 +1,7 @@
 import requests
 import time
 import sys
+import regex as re
 
 s = requests.Session()
  
@@ -45,8 +46,26 @@ def tb():
     response = s.post(url=tb_url, data=tb_data)
     #print(response.text)
     return response.json()['msg']
+
+"""
+    获取排行榜
+"""
+def ranking():
+    rk_url = 'https://wx.app.nbpt.edu.cn/yqtb/weixin/yqtb/rank?date=20' + time.strftime('%y-%m-%d')
+    rk = s.get(rk_url)
+    html = rk.text
+    print(html)
+    reg = re.compile('<div.*?ll__bd.*?5px;\">(.*?)</span>(.*?)<span sty.*?or:#999\">(.*?)</span>.*?</div>', re.S)
+    result = re.findall(reg, html)
     
+    print(result)
+    for r in result:
+        print("第{}名：\t{}\t{}".format(r[0], r[1].strip(), r[2]))
+
+
+
 if __name__ == '__main__':
     if not login(sys.argv[1], sys.argv[2]):
         print(tb()) 
+        ranking()
         
