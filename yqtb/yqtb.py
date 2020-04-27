@@ -8,7 +8,7 @@ s = requests.Session()
  
 """
 登录
-args stu_name: 学生名字
+args stu_name: 学生的名字
 args stu_id: 学号
 returns: 返回是否登录成功
 """
