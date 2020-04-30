@@ -9,8 +9,4 @@ python3 yqtb.py 姓名 学号
 
 默认schoolid为5，如果不是在代码里修改
 
-日志
-
-使用BeautifulSoup解析获取排行榜
-
-增加了获取排行榜，但是速度匹配感人
+提交成功的信息和排行榜可在tb_log.txt和ranking.txt里查看
